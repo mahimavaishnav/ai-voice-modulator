@@ -8,7 +8,7 @@ import { ThemeProvider } from './components/providers/ThemeProvider.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+    <ThemeProvider defaultTheme="light" storageKey="ai-voice-modulator-theme">
       <App />
     </ThemeProvider>
   </BrowserRouter>

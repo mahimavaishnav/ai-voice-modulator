@@ -87,10 +87,10 @@ const Home: React.FC = () => {
           <div className="flex items-center gap-8">
             <Link to="/" className="flex items-center gap-3 group">
               <div className="relative w-8 h-8 rounded-full overflow-hidden border border-[#ebdcd0] dark:border-[#201f1c] shadow-sm transition-transform duration-300 group-hover:scale-105">
-                <img src={logoImage} className="w-full h-full object-cover" alt="LipSync Logo" />
+                <img src={logoImage} className="w-full h-full object-cover" alt="AI Voice Modulator Logo" />
               </div>
               <span className="font-semibold text-base tracking-tight font-sans text-[#1c1c1c] dark:text-[#e5e1db]">
-                LIPSYNC AI
+                AI VOICE MODULATOR
               </span>
             </Link>
 
@@ -122,7 +122,7 @@ const Home: React.FC = () => {
               {isAuthenticated ? (
                 <>
                   <Link
-                    to="/clips"
+                    to="/videos"
                     className="flex items-center justify-center gap-1.5 bg-[#385942] hover:bg-[#2d4735] dark:bg-[#4b7358] dark:hover:bg-[#3d5e48] text-white px-4.5 py-2 rounded-full text-xs font-semibold tracking-wide transition-all shadow-sm group"
                   >
                     Go to Workspace
@@ -181,7 +181,7 @@ const Home: React.FC = () => {
               {isAuthenticated ? (
                 <>
                   <Link
-                    to="/clips"
+                    to="/videos"
                     onClick={() => setMobileNavOpen(false)}
                     className="w-full flex items-center justify-center gap-1.5 bg-[#385942] hover:bg-[#2d4735] dark:bg-[#4b7358] dark:hover:bg-[#3d5e48] text-white py-2.5 rounded-full text-xs font-semibold tracking-wide transition-colors shadow-sm"
                   >
@@ -288,7 +288,7 @@ const Home: React.FC = () => {
             className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2"
           >
             <Link
-              to={isAuthenticated ? "/clips" : "/register"}
+              to={isAuthenticated ? "/videos" : "/register"}
               className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3 bg-[#385942] hover:bg-[#2d4735] dark:bg-[#4b7358] dark:hover:bg-[#3d5e48] text-white rounded-full font-semibold text-sm tracking-wide transition-all shadow-md group cursor-pointer"
             >
               Start Creating Now
@@ -509,7 +509,7 @@ const Home: React.FC = () => {
                 </ul>
               </div>
               <Link 
-                to={isAuthenticated ? "/clips" : "/register"}
+                to={isAuthenticated ? "/videos" : "/register"}
                 className="w-full text-center py-2.5 border border-[#ebdcd0] dark:border-[#201f1c] hover:border-[#385942] dark:hover:border-[#7ea68a] hover:bg-[#faf8f5] dark:hover:bg-[#1a1917] rounded-full text-xs font-semibold tracking-wide text-[#1c1c1c] dark:text-[#e5e1db] transition-colors"
               >
                 Start Free
@@ -537,7 +537,7 @@ const Home: React.FC = () => {
                 </ul>
               </div>
               <Link 
-                to={isAuthenticated ? "/clips" : "/register"}
+                to={isAuthenticated ? "/videos" : "/register"}
                 className="w-full text-center py-2.5 bg-[#385942] hover:bg-[#2d4735] dark:bg-[#4b7358] dark:hover:bg-[#3d5e48] text-white rounded-full text-xs font-semibold tracking-wide transition-all shadow-sm"
               >
                 Claim Pro Trial 🎁
@@ -581,10 +581,10 @@ const Home: React.FC = () => {
             <div className="col-span-2 space-y-4">
               <Link to="/" className="flex items-center gap-3 group w-fit">
                 <div className="relative w-7.5 h-7.5 rounded-full overflow-hidden border border-[#ebdcd0]/30 dark:border-[#201f1c] shadow-sm">
-                  <img src={logoImage} className="w-full h-full object-cover" alt="LipSync Logo" />
+                  <img src={logoImage} className="w-full h-full object-cover" alt="AI Voice Modulator Logo" />
                 </div>
                 <span className="font-semibold text-base tracking-tight text-white dark:text-[#e5e1db] font-sans">
-                  LIPSYNC AI
+                  AI VOICE MODULATOR
                 </span>
               </Link>
               <p className="text-sm text-[#a39e95] dark:text-[#77746d] max-w-xs leading-relaxed font-sans">
@@ -641,7 +641,7 @@ const Home: React.FC = () => {
           {/* Bottom copyright */}
           <div className="border-t border-[#ebdcd0]/10 dark:border-[#201f1c] pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#a39e95] dark:text-[#77746d] gap-4 font-sans">
             <div>
-              &copy; {new Date().getFullYear()} LipSync AI Inc. All rights reserved.
+              &copy; {new Date().getFullYear()} AI Voice Modulator Inc. All rights reserved.
             </div>
             <div className="flex gap-4">
               <a href="#" className="hover:underline">Security</a>

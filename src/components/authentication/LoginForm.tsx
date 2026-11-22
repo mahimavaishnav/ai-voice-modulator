@@ -65,10 +65,10 @@ const LoginForm: React.FC = () => {
             <Link to="/" className="flex items-center gap-3 group">
               {/* Logo from assets */}
               <div className="relative w-8 h-8 rounded-full overflow-hidden border border-[#ebdcd0] dark:border-[#201f1c] shadow-sm transition-transform duration-300 group-hover:scale-105">
-                <img src={logoImage} className="w-full h-full object-cover" alt="LipSync Logo" />
+                <img src={logoImage} className="w-full h-full object-cover" alt="AI Voice Modulator Logo" />
               </div>
               <span className="font-semibold text-base tracking-tight font-sans text-[#1c1c1c] dark:text-[#e5e1db]">
-                LIPSYNC AI
+                AI VOICE MODULATOR
               </span>
             </Link>
             
@@ -171,7 +171,7 @@ const LoginForm: React.FC = () => {
           
           <blockquote className="space-y-4">
             <p className="text-3xl font-normal leading-snug text-zinc-100 font-serif tracking-tight">
-              "Lipsync AI has revolutionized how we create localized content. It's incredibly fast, accurate, and saves us *hundreds of editing hours*."
+              "AI Voice Modulator has revolutionized how we create localized content. It's incredibly fast, accurate, and saves us *hundreds of editing hours*."
             </p>
             <footer className="text-xs font-mono text-zinc-400 flex items-center gap-2">
               <span className="w-4 h-[1px] bg-zinc-550"></span>

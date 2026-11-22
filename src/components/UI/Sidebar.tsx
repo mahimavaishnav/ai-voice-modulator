@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { Home, Video, Mic, Clapperboard, Menu, ChevronLeft, Sun, Moon, X } from "lucide-react";
+import { Home, Video, Menu, ChevronLeft, Sun, Moon, X } from "lucide-react";
 import { cn } from "../../lib/utils";
 import { useState } from "react";
 import { useTheme } from "../providers/ThemeProvider";
@@ -17,8 +17,6 @@ const Sidebar: React.FC<SidebarProps> = ({ className, onClose }) => {
   const navItems = [
     { name: "Home", path: "/", icon: Home },
     { name: "Videos", path: "/videos", icon: Video },
-    { name: "Voices", path: "/voices", icon: Mic },
-    { name: "Generate Clips", path: "/clips", icon: Clapperboard },
   ];
 
   return (
@@ -45,7 +43,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className, onClose }) => {
           {(!isCollapsed || window.innerWidth < 768) && (
             <div className="flex items-center gap-2.5 font-bold text-base tracking-tight font-sans text-[#1c1c1c] dark:text-white">
               <img src={logoImage} className="w-6.5 h-6.5 rounded-full object-cover border border-[#ebdcd0] dark:border-[#201f1c]" alt="Logo" />
-              LIPSYNC AI
+              AI VOICE MODULATOR
             </div>
           )}
 

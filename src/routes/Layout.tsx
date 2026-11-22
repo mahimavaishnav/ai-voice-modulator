@@ -26,7 +26,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <div className="md:hidden h-16 flex items-center justify-between px-4 border-b border-zinc-200 dark:border-white/5 bg-white dark:bg-[#09090b]">
             <div className="flex items-center gap-2 font-bold text-xl tracking-wide bg-gradient-to-r from-blue-600 to-sky-500 dark:from-blue-400 dark:to-sky-400 bg-clip-text text-transparent">
               <Sparkles className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-              LIPSYNC AI
+              AI VOICE MODULATOR
             </div>
             <button onClick={() => setMobileMenuOpen(true)} className="p-2 text-zinc-500 dark:text-zinc-400">
               <Menu className="w-6 h-6" />

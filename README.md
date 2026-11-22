@@ -54,15 +54,17 @@ gitignored.
 
 UI-only branch. No backend calls are made from any routed screen.
 
-| Route     | Screen                    | Data                     |
-| --------- | ------------------------- | ------------------------ |
-| `/`       | Landing page              | static                   |
-| `/videos` | Video gallery             | static placeholder rows  |
-| `/login`  | Login form                | mocked store, no request |
-| `/register` | Sign up form            | mocked store, no request |
+| Route       | Screen                         | Data                                   |
+| ----------- | ------------------------------ | -------------------------------------- |
+| `/`         | Landing page + video showcase  | static, plays the sample demo media    |
+| `/videos`   | Video gallery                  | static rows, playable sample videos    |
+| `/voices`   | Voice Lab                      | static voices, playable sample audio   |
+| `/speech`   | Speech history                 | static table rows                      |
+| `/clips`    | Generate Content               | simulated generation with demo preview |
+| `/login`    | Login form                     | mocked store, no request               |
+| `/register` | Sign up form                   | mocked store, no request               |
 
-The Voices, Speech and Generate Clips routes were removed for now, along with the
-`ProtectedRoute` auth gate, so every screen is reachable without signing in.
-Their page, component, store and service files are still in the repository -
-they are simply not routed, so nothing imports them and no request is made. Data
-that came from the API is rendered from static placeholders instead.
+The `ProtectedRoute` auth gate is not used on this branch, so every screen is
+reachable without signing in. Data that came from the API is rendered from
+static mock data instead. The old store and service files remain in the
+repository but are not imported by any routed screen.

@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { Home, Video, Menu, ChevronLeft, Sun, Moon, X } from "lucide-react";
+import { Home, Video, Mic, Volume2, Clapperboard, Menu, ChevronLeft, Sun, Moon, X } from "lucide-react";
 import { cn } from "../../lib/utils";
 import { useState } from "react";
 import { useTheme } from "../providers/ThemeProvider";
@@ -17,6 +17,9 @@ const Sidebar: React.FC<SidebarProps> = ({ className, onClose }) => {
   const navItems = [
     { name: "Home", path: "/", icon: Home },
     { name: "Videos", path: "/videos", icon: Video },
+    { name: "Voices", path: "/voices", icon: Mic },
+    { name: "Speeches", path: "/speech", icon: Volume2 },
+    { name: "Generate", path: "/clips", icon: Clapperboard },
   ];
 
   return (

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Clapperboard, Sparkles, Video, Volume2, Wand2, Play } from 'lucide-react';
+import { Clapperboard, Sparkles, Video, Volume2, Wand2, Play, Download } from 'lucide-react';
 import { toast } from 'sonner';
 import { Card, CardHeader, CardTitle, CardContent } from '../components/UI/card';
 
@@ -8,6 +8,7 @@ const GenerateClips: React.FC = () => {
   const [selectedVoice, setSelectedVoice] = useState<string>("");
   const [text, setText] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
+  const [generated, setGenerated] = useState(false);
 
   const handleGenerate = () => {
     if (!selectedVideo || !selectedVoice || !text.trim()) {
@@ -16,9 +17,11 @@ const GenerateClips: React.FC = () => {
     }
 
     setIsGenerating(true);
+    setGenerated(false);
     setTimeout(() => {
       setIsGenerating(false);
-      toast.info("We are building this pipeline.", {
+      setGenerated(true);
+      toast.success("Mock clip generated!", {
         description: "The AI generation pipeline is simulated for demo purposes.",
         duration: 5000,
       });
@@ -114,15 +117,34 @@ const GenerateClips: React.FC = () => {
           {/* Subtle grid pattern background */}
           <div className="absolute inset-0 z-0 opacity-[0.02] bg-[radial-gradient(#808080_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none"></div>
 
-          <div className="text-center space-y-4 relative z-10">
-            <button 
-              onClick={handleGenerate}
-              className="w-14 h-14 bg-[#faf8f5] dark:bg-[#0d0d0c] rounded-full flex items-center justify-center mx-auto border border-[#ebdcd0] dark:border-[#201f1c] shadow-sm hover:scale-105 transition-transform cursor-pointer"
-            >
-              <Play className="w-5 h-5 text-[#385942] dark:text-[#7ea68a] ml-0.5 fill-current" />
-            </button>
-            <p className="text-xs text-[#5c5852] dark:text-[#a39e95] font-semibold">Preview will appear here</p>
-          </div>
+          {generated ? (
+            <div className="w-full h-full p-4 flex flex-col items-center justify-center gap-4 relative z-10">
+              <video
+                src="/generated_video_13.mp4"
+                controls
+                autoPlay
+                className="w-full max-h-[420px] bg-black rounded-xl object-contain"
+              />
+              <a
+                href="/generated_video_13.mp4"
+                download="ai-voice-modulator-mock-clip.mp4"
+                className="flex items-center gap-2 px-5 py-2 bg-[#385942] hover:bg-[#2d4735] dark:bg-[#4b7358] dark:hover:bg-[#3d5e48] text-white dark:text-black rounded-full text-xs font-semibold tracking-wide shadow-sm transition-colors cursor-pointer"
+              >
+                <Download className="w-3.5 h-3.5" />
+                Download mock clip
+              </a>
+            </div>
+          ) : (
+            <div className="text-center space-y-4 relative z-10">
+              <button
+                onClick={handleGenerate}
+                className="w-14 h-14 bg-[#faf8f5] dark:bg-[#0d0d0c] rounded-full flex items-center justify-center mx-auto border border-[#ebdcd0] dark:border-[#201f1c] shadow-sm hover:scale-105 transition-transform cursor-pointer"
+              >
+                <Play className="w-5 h-5 text-[#385942] dark:text-[#7ea68a] ml-0.5 fill-current" />
+              </button>
+              <p className="text-xs text-[#5c5852] dark:text-[#a39e95] font-semibold">Preview will appear here</p>
+            </div>
+          )}
         </div>
       </div>
     </div>

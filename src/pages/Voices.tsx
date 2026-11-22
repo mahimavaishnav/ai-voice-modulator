@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Mic, Plus, Play, Music } from "lucide-react";
+import { Mic, Plus, Play, Music, Volume2, X } from "lucide-react";
 import { toast } from "sonner";
 import { cn } from "../lib/utils";
 import { Card, CardContent, CardHeader, CardTitle } from "../components/UI/card";
@@ -18,6 +18,7 @@ const VoicePage: React.FC = () => {
   ]);
   const [showCreatePanel, setShowCreatePanel] = useState(false);
   const [newVoiceName, setNewVoiceName] = useState("");
+  const [playingVoice, setPlayingVoice] = useState<VoiceItem | null>(null);
 
   const handleCreateVoice = () => {
     if (!newVoiceName.trim()) {
@@ -78,7 +79,11 @@ const VoicePage: React.FC = () => {
                 </div>
               </div>
             </div>
-            <button className="p-2.5 text-[#5c5852] dark:text-[#a39e95] hover:text-[#1c1c1c] dark:hover:text-white rounded-full hover:bg-[#faf8f5] dark:hover:bg-[#1a1917] transition-colors cursor-pointer border border-transparent hover:border-[#ebdcd0] dark:hover:border-[#201f1c]">
+            <button
+              onClick={() => setPlayingVoice(voice)}
+              aria-label={`Preview ${voice.name}`}
+              className="p-2.5 text-[#5c5852] dark:text-[#a39e95] hover:text-[#1c1c1c] dark:hover:text-white rounded-full hover:bg-[#faf8f5] dark:hover:bg-[#1a1917] transition-colors cursor-pointer border border-transparent hover:border-[#ebdcd0] dark:hover:border-[#201f1c]"
+            >
               <Play className="w-3.5 h-3.5 fill-current" />
             </button>
           </div>
@@ -133,6 +138,26 @@ const VoicePage: React.FC = () => {
               </div>
             </CardContent>
           </Card>
+        </div>
+      )}
+
+      {/* Mock voice preview player */}
+      {playingVoice && (
+        <div className="fixed bottom-5 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-2rem)] max-w-lg flex items-center gap-3 bg-[#fdfdfc] dark:bg-[#121211] border border-[#ebdcd0] dark:border-[#201f1c] rounded-full shadow-2xl px-4 py-3">
+          <div className="p-2 rounded-full bg-[#385942]/10 dark:bg-[#4b7358]/10 text-[#385942] dark:text-[#7ea68a] shrink-0">
+            <Volume2 className="w-4 h-4" />
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="text-xs font-semibold text-[#1c1c1c] dark:text-zinc-200 truncate">{playingVoice.name}</p>
+            <audio src="/(Audio) zuck.m4a" controls autoPlay className="w-full h-8 mt-1" />
+          </div>
+          <button
+            onClick={() => setPlayingVoice(null)}
+            aria-label="Close voice preview"
+            className="p-1.5 rounded-full text-[#5c5852] dark:text-[#a39e95] hover:bg-[#faf8f5] dark:hover:bg-[#1a1917] cursor-pointer shrink-0"
+          >
+            <X className="w-4 h-4" />
+          </button>
         </div>
       )}
     </div>

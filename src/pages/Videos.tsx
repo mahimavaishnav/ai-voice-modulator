@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Upload, Play, Trash2, Film, Plus } from "lucide-react";
+import { Upload, Play, Trash2, Film, Plus, X } from "lucide-react";
 import { toast } from "sonner";
 
 interface VideoItem {
@@ -12,10 +12,11 @@ interface VideoItem {
 
 const Videos: React.FC = () => {
   const [videos, setVideos] = useState<VideoItem[]>([
-    { id: 1, name: "Demo_Product_Launch.mp4", url: "", size: "12.5 MB", date: "2024-03-10" },
-    { id: 2, name: "Tutorial_Part1.mp4", url: "", size: "45.2 MB", date: "2024-03-12" },
-    { id: 3, name: "Customer_Testimonial.mp4", url: "", size: "8.1 MB", date: "2024-03-14" },
+    { id: 1, name: "Demo_Product_Launch.mp4", url: "/original_video.mp4", size: "12.5 MB", date: "2024-03-10" },
+    { id: 2, name: "Tutorial_Part1.mp4", url: "/generated_video_13.mp4", size: "45.2 MB", date: "2024-03-12" },
+    { id: 3, name: "Customer_Testimonial.mp4", url: "/generated_video_20.mp4", size: "8.1 MB", date: "2024-03-14" },
   ]);
+  const [preview, setPreview] = useState<VideoItem | null>(null);
 
   const handleUpload = () => {
     toast.info("We are building this functionality.", {
@@ -31,6 +32,23 @@ const Videos: React.FC = () => {
       date: new Date().toISOString().split('T')[0]
     };
     setVideos([newVideo, ...videos]);
+  };
+
+  const handlePlay = (video: VideoItem) => {
+    if (!video.url) {
+      toast.info("Demo preview unavailable.", {
+        description: "This is a simulated upload. Try one of the sample videos.",
+        duration: 4000,
+      });
+      return;
+    }
+    setPreview(video);
+  };
+
+  const handleDelete = (video: VideoItem) => {
+    setVideos((current) => current.filter((item) => item.id !== video.id));
+    if (preview?.id === video.id) setPreview(null);
+    toast.success("Video removed from the demo gallery.");
   };
 
   return (
@@ -70,11 +88,15 @@ const Videos: React.FC = () => {
           <div key={video.id} className="group relative bg-[#fdfdfc] dark:bg-[#121211] border border-[#ebdcd0] dark:border-[#201f1c] hover:border-[#385942] dark:hover:border-[#7ea68a] rounded-2xl overflow-hidden transition-all shadow-sm">
             <div className="h-32 bg-[#faf8f5] dark:bg-[#0d0d0c] border-b border-[#ebdcd0]/30 dark:border-[#201f1c]/50 flex items-center justify-center relative">
               <Film className="w-8 h-8 text-[#ebdcd0] dark:text-[#201f1c] group-hover:text-[#385942] dark:group-hover:text-[#7ea68a] transition-colors" />
-              <div className="absolute inset-0 bg-black/10 dark:bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity backdrop-blur-[1px]">
-                <button className="p-3 rounded-full bg-white dark:bg-[#121211] text-[#385942] dark:text-[#7ea68a] hover:scale-105 transition-transform shadow-lg cursor-pointer border border-[#ebdcd0] dark:border-[#201f1c]">
+              <button
+                onClick={() => handlePlay(video)}
+                aria-label={`Play ${video.name}`}
+                className="absolute inset-0 bg-black/10 dark:bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity backdrop-blur-[1px] cursor-pointer"
+              >
+                <span className="p-3 rounded-full bg-white dark:bg-[#121211] text-[#385942] dark:text-[#7ea68a] hover:scale-105 transition-transform shadow-lg border border-[#ebdcd0] dark:border-[#201f1c]">
                   <Play className="w-4.5 h-4.5 fill-current ml-0.5" />
-                </button>
-              </div>
+                </span>
+              </button>
             </div>
 
             <div className="p-4 bg-[#fdfdfc] dark:bg-[#121211]">
@@ -83,7 +105,11 @@ const Videos: React.FC = () => {
                   <h3 className="text-sm font-semibold text-[#1c1c1c] dark:text-zinc-200 truncate max-w-[180px]" title={video.name}>{video.name}</h3>
                   <p className="text-xs text-[#5c5852] dark:text-[#a39e95] font-mono">{video.size} • {video.date}</p>
                 </div>
-                <button className="text-[#5c5852] dark:text-[#a39e95] hover:text-red-500 dark:hover:text-red-400 transition-colors p-1 rounded-full cursor-pointer">
+                <button
+                  onClick={() => handleDelete(video)}
+                  aria-label={`Delete ${video.name}`}
+                  className="text-[#5c5852] dark:text-[#a39e95] hover:text-red-500 dark:hover:text-red-400 transition-colors p-1 rounded-full cursor-pointer"
+                >
                   <Trash2 className="w-4 h-4" />
                 </button>
               </div>
@@ -91,6 +117,25 @@ const Videos: React.FC = () => {
           </div>
         ))}
       </div>
+
+      {/* Demo video player */}
+      {preview && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4" onClick={() => setPreview(null)}>
+          <div className="w-full max-w-3xl bg-[#fdfdfc] dark:bg-[#121211] border border-[#ebdcd0] dark:border-[#201f1c] rounded-2xl overflow-hidden shadow-2xl" onClick={(event) => event.stopPropagation()}>
+            <div className="flex items-center justify-between px-5 py-3 border-b border-[#ebdcd0]/60 dark:border-[#201f1c]">
+              <h2 className="text-sm font-semibold text-[#1c1c1c] dark:text-zinc-200 truncate">{preview.name}</h2>
+              <button
+                onClick={() => setPreview(null)}
+                aria-label="Close preview"
+                className="p-1.5 rounded-full text-[#5c5852] dark:text-[#a39e95] hover:bg-[#faf8f5] dark:hover:bg-[#1a1917] cursor-pointer"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+            <video src={preview.url} controls autoPlay className="w-full max-h-[70vh] bg-black object-contain" />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

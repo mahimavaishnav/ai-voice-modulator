@@ -122,7 +122,7 @@ const Home: React.FC = () => {
               {isAuthenticated ? (
                 <>
                   <Link
-                    to="/videos"
+                    to="/clips"
                     className="flex items-center justify-center gap-1.5 bg-[#385942] hover:bg-[#2d4735] dark:bg-[#4b7358] dark:hover:bg-[#3d5e48] text-white px-4.5 py-2 rounded-full text-xs font-semibold tracking-wide transition-all shadow-sm group"
                   >
                     Go to Workspace
@@ -181,7 +181,7 @@ const Home: React.FC = () => {
               {isAuthenticated ? (
                 <>
                   <Link
-                    to="/videos"
+                    to="/clips"
                     onClick={() => setMobileNavOpen(false)}
                     className="w-full flex items-center justify-center gap-1.5 bg-[#385942] hover:bg-[#2d4735] dark:bg-[#4b7358] dark:hover:bg-[#3d5e48] text-white py-2.5 rounded-full text-xs font-semibold tracking-wide transition-colors shadow-sm"
                   >
@@ -288,7 +288,7 @@ const Home: React.FC = () => {
             className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2"
           >
             <Link
-              to={isAuthenticated ? "/videos" : "/register"}
+              to={isAuthenticated ? "/clips" : "/register"}
               className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3 bg-[#385942] hover:bg-[#2d4735] dark:bg-[#4b7358] dark:hover:bg-[#3d5e48] text-white rounded-full font-semibold text-sm tracking-wide transition-all shadow-md group cursor-pointer"
             >
               Start Creating Now
@@ -509,7 +509,7 @@ const Home: React.FC = () => {
                 </ul>
               </div>
               <Link 
-                to={isAuthenticated ? "/videos" : "/register"}
+                to={isAuthenticated ? "/clips" : "/register"}
                 className="w-full text-center py-2.5 border border-[#ebdcd0] dark:border-[#201f1c] hover:border-[#385942] dark:hover:border-[#7ea68a] hover:bg-[#faf8f5] dark:hover:bg-[#1a1917] rounded-full text-xs font-semibold tracking-wide text-[#1c1c1c] dark:text-[#e5e1db] transition-colors"
               >
                 Start Free
@@ -537,7 +537,7 @@ const Home: React.FC = () => {
                 </ul>
               </div>
               <Link 
-                to={isAuthenticated ? "/videos" : "/register"}
+                to={isAuthenticated ? "/clips" : "/register"}
                 className="w-full text-center py-2.5 bg-[#385942] hover:bg-[#2d4735] dark:bg-[#4b7358] dark:hover:bg-[#3d5e48] text-white rounded-full text-xs font-semibold tracking-wide transition-all shadow-sm"
               >
                 Claim Pro Trial 🎁

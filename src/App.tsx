@@ -1,13 +1,16 @@
 import './App.css'
 import React, { Suspense, lazy } from 'react'
 import { Toaster } from 'sonner'
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Layout from './routes/Layout'
 
 const LoginForm = lazy(() => import('./components/authentication/LoginForm'));
 const SignupForm = lazy(() => import('./components/authentication/SignupForm'));
 const Home = lazy(() => import('./pages/Home'));
+const VoicePage = lazy(() => import('./pages/Voices'));
+const Speech = lazy(() => import('./pages/Speech'));
 const Videos = lazy(() => import('./pages/Videos'));
+const GenerateClips = lazy(() => import('./pages/GenerateClips'));
 
 const App: React.FC = () => {
   return (
@@ -29,10 +32,10 @@ const App: React.FC = () => {
           <Route path='/' element={<Layout />}>
             <Route index element={<Home />} />
             <Route path='/videos' element={<Videos />} />
+            <Route path='/voices' element={<VoicePage />} />
+            <Route path='/speech' element={<Speech />} />
+            <Route path='/clips' element={<GenerateClips />} />
           </Route>
-
-          {/* Any screen not on this branch falls back to the landing page */}
-          <Route path='*' element={<Navigate to='/' replace />} />
         </Routes>
       </Suspense>
       <Toaster position="top-right" richColors />

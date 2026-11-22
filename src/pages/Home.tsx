@@ -108,12 +108,13 @@ const Home: React.FC = () => {
             <button
               onClick={toggleTheme}
               className="p-2.5 rounded-full border border-[#ebdcd0] dark:border-[#201f1c] bg-transparent hover:bg-[#f3eee5] dark:hover:bg-[#1a1917] transition-all cursor-pointer text-[#5c5852] dark:text-[#a39e95]"
-              aria-label="Toggle theme"
+              aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+              title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
             >
               {theme === "dark" ? (
-                <Sun className="w-3.5 h-3.5 text-zinc-400 hover:text-yellow-400 transition-colors" />
+                <Moon className="w-4 h-4 text-[#a39e95]" />
               ) : (
-                <Moon className="w-3.5 h-3.5 text-zinc-650 hover:text-blue-600 transition-colors" />
+                <Sun className="w-4 h-4 text-[#5c5852] hover:text-amber-500 transition-colors" />
               )}
             </button>
 

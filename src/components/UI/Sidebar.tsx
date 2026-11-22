@@ -118,23 +118,6 @@ const Sidebar: React.FC<SidebarProps> = ({ className, onClose }) => {
             )}
             <span className={cn("md:block", isCollapsed ? "md:hidden" : "block")}>Toggle Theme</span>
           </button>
-
-          <a
-            href="https://x.com/Sarthakbuilds"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={cn(
-              "flex items-center gap-3 p-2 rounded-full text-[11px] font-semibold text-[#5c5852] dark:text-[#a39e95] hover:bg-[#faf8f5] dark:hover:bg-[#0d0d0c] hover:text-[#1c1c1c] dark:hover:text-white transition-colors group",
-              isCollapsed && "md:justify-center"
-            )}
-          >
-            <div className="w-5 h-5 rounded-full bg-[#f3eee5] dark:bg-[#1a1917] flex items-center justify-center shrink-0 border border-[#ebdcd0]/60 dark:border-[#201f1c]">
-              <span className="text-[9px] font-bold text-[#385942] dark:text-[#7ea68a]">S</span>
-            </div>
-            <div className={cn("flex flex-col md:block", isCollapsed ? "md:hidden" : "block")}>
-              <span className="group-hover:text-[#385942] dark:group-hover:text-[#7ea68a] transition-colors">@sarthakbuilds</span>
-            </div>
-          </a>
         </div>
       </aside>
     </>
